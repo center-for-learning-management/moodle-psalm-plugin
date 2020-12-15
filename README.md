@@ -1,18 +1,19 @@
-# psalm-strict-visibility
+<<<<<<< HEAD
+# psalm-moodle-plugin
 A [Psalm](https://github.com/vimeo/psalm) plugin to detect calling private or protected method via proxy
 
 Installation:
 
 ```console
-$ composer require --dev orklah/psalm-strict-visibility
-$ vendor/bin/psalm-plugin enable orklah/psalm-strict-visibility
+$ composer require --dev klebann/psalm-moodle-plugin
+$ vendor/bin/psalm-plugin enable klebann/psalm-moodle-plugin
 ```
 
 Usage:
 
 Run your usual Psalm command:
 ```console
-$ vendor/bin/psalm
+$ vendor/bin/psalm --config=psalm-plugin.xml --no-diff
 ```
 
 Explanation:
@@ -45,3 +46,7 @@ $first_secret_key->proxyByParam($second_secret_key);
 This call to $first_secret_key instance will actually call a private method on $second_secret_key and display the value of the private attribute of $second_secret_key
 
 This plugins intends to fill those holes in PHP visibility checks
+=======
+# psalm-moodle-plugin
+Psalm plugin for checking Moodle Plugins
+>>>>>>> a6dd2b118edee6e44b97773c7cf48b9be6684964
