@@ -1,0 +1,31 @@
+{
+    "name": "klebann/moodle-psalm-plugin",
+    "description": "A Psalm plugin to detect unsafe usage of $DB methods with SQL",
+    "type": "psalm-plugin",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "klebann"
+        }
+    ],
+    "extra": {
+        "psalm" : {
+            "pluginClass": "Klebann\\MoodlePsalmPlugin\\Plugin"
+        }
+    },
+    "require": {
+        "php": "^7.1",
+        "ext-simplexml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Klebann\\MoodlePsalmPlugin\\": ["."],
+            "Klebann\\MoodlePsalmPlugin\\Hooks\\": ["hooks"]
+        }
+    },
+    "require-dev": {
+        "vimeo/psalm": "^4.3",
+        "nikic/php-parser": "^4.0"
+    }
+}
