@@ -1,17 +1,17 @@
 {
-    "name": "orklah/psalm-strict-visibility",
-    "description": "A Psalm plugin to detect calling private or protected method via proxy",
+    "name": "klebann/moodle-psalm-plugin",
+    "description": "A Psalm plugin to detect unsafe usage of $DB methods with SQL",
     "type": "psalm-plugin",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
-            "name": "orklah"
+            "name": "klebann"
         }
     ],
     "extra": {
         "psalm" : {
-            "pluginClass": "Orklah\\PsalmStrictVisibility\\Plugin"
+            "pluginClass": "Klebann\\MoodlePsalmPlugin\\Plugin"
         }
     },
     "require": {
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Orklah\\PsalmStrictVisibility\\": ["."],
-            "Orklah\\PsalmStrictVisibility\\Hooks\\": ["hooks"]
+            "Klebann\\MoodlePsalmPlugin\\": ["."],
+            "Klebann\\MoodlePsalmPlugin\\Hooks\\": ["hooks"]
         }
     },
     "require-dev": {
-        "vimeo/psalm": "^4.0",
+        "vimeo/psalm": "^4.3",
         "nikic/php-parser": "^4.0"
     }
 }

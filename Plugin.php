@@ -1,7 +1,8 @@
 <?php
-namespace Orklah\PsalmStrictVisibility;
+namespace Klebann\MoodlePsalmPlugin;
 
-use Orklah\PsalmStrictVisibility\Hooks\StrictVisibility;
+use Klebann\MoodlePsalmPlugin\Hooks\ReturnTypeProvider;
+use Klebann\MoodlePsalmPlugin\Hooks\StrictVisibility;
 use SimpleXMLElement;
 use Psalm\Plugin\PluginEntryPointInterface;
 use Psalm\Plugin\RegistrationInterface;
@@ -12,6 +13,10 @@ class Plugin implements PluginEntryPointInterface
     {
         if(class_exists(StrictVisibility::class)){
             $psalm->registerHooksFromClass(StrictVisibility::class);
+        }
+
+        if(class_exists(ReturnTypeProvider::class)){
+            $psalm->registerHooksFromClass(ReturnTypeProvider::class);
         }
     }
 }
