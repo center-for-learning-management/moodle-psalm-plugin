@@ -1,17 +1,24 @@
 <?xml version="1.0"?>
 <psalm
     totallyTyped="false"
-    errorLevel="1"
+    errorLevel="7"
     resolveFromConfigFile="true"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     errorBaseline="psalm-baseline.xml"
+    autoloader="../../../psalm-autoload.php"
 >
+    <globals>
+        <var name="DB" type="moodle_database|null" />
+    </globals>
+    <xi:include href="issueHandlers.xml" />
     <projectFiles>
         <directory name="tests"/>
     </projectFiles>
     <plugins>
         <plugin filename="hooks/MoodleScanner.php" />
+        <plugin filename="hooks/ReturnTypeProvider.php" />
     </plugins>
 </psalm>
