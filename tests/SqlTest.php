@@ -51,7 +51,7 @@ Tests from Tomasz
 "also $dynamic string"
 'and this is $static of course'
 */
-$string = '$string';
+$string = 'some string';
 $stringinstring = "String in $string";
 $DB->get_records_sql( "static string",$params);
 $DB->get_records_sql( "also a" . " static string",$params);
@@ -62,7 +62,6 @@ $DB->get_records_sql( 'one ' . 'two ' . 'three',$params);
 $DB->get_records_sql( $stringinstring ,$params);
 
 //variable with variable and text
-//Unknown type of $insql
 $statuses = ['todo', 'open', 'inprogress', 'intesting'];
 list($insql, $inparams) = $DB->get_in_or_equal($statuses);
 $sql5 = "SELECT * FROM {bugtracker_issues} WHERE status $insql";
