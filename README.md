@@ -12,6 +12,8 @@ $ vendor/bin/psalm-plugin enable klebann/moodle-psalm-plugin
 
 ## Usage:
 
+Copy [psalm-plugin.xml](psalm-plugin.xml) and [issueHandlers.xml](issueHandlers.xml) to Psalm root directory and modify it for your specific usuage.
+
 Run your usual Psalm command:
 ```console
 $ vendor/bin/psalm --config=psalm-plugin.xml --no-diff
@@ -23,7 +25,7 @@ Created to automate Security-focused code review for moodle plugins:
 
 "In order to prevent SQL injection, always use data placeholders in your queries (? or :named) to pass data from users into the queries." ~ [Data Manipulation API - Placeholders](https://docs.moodle.org/dev/Data_manipulation_API#Placeholders)
 
-## Example
+## Example:
 
 PHP:
 ```php
