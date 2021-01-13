@@ -114,6 +114,7 @@ class MoodleScanner implements AfterMethodCallAnalysisInterface
 class MoodleScannerManager{
 
     public function chooseAction($type, $assign, $context, $statements_source, &$info){
+        $safe_function = array('get_all_user_name_fields');
         //TODO: differ code for 2 types (Expr\Assign and Node\Arg)
         //$info .= "$type\n";
         //$info .= print_r($assign, true);
@@ -180,6 +181,16 @@ class MoodleScannerManager{
                 $name = '$'.$assign->var->name;
                 $info .= "    Unknown type of $name - $type\n";
                 return " $name ";
+            case "Expr_FuncCall":
+                $name = '$'.$assign->var->name;
+                $nameoffunction = $assign->expr->name->parts[0];
+                if (in_array($nameoffunction, $safe_function)) {
+                    $info .= "    Safe variable $name: created by $nameoffunction()\n";
+                }
+                else {
+                    $info .= "    Warning: Unknown variable $name: created by $nameoffunction";
+                }
+                return $name;
             default:
                 $info .= "    Warning: Unknown type ($type) of variable!\n";
                 $info .= print_r($assign, true);

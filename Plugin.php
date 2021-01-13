@@ -2,7 +2,7 @@
 namespace Klebann\MoodlePsalmPlugin;
 
 use Klebann\MoodlePsalmPlugin\Hooks\MoodleScanner;
-use Klebann\MoodlePsalmPlugin\Hooks\ReturnTypeProvider;
+use Klebann\MoodlePsalmPlugin\Hooks\MyMethodReturnTypeProvider;
 use SimpleXMLElement;
 use Psalm\Plugin\PluginEntryPointInterface;
 use Psalm\Plugin\RegistrationInterface;
@@ -15,8 +15,8 @@ class Plugin implements PluginEntryPointInterface
             $psalm->registerHooksFromClass(MoodleScanner::class);
         }
 
-        if(class_exists(ReturnTypeProvider::class)){
-            $psalm->registerHooksFromClass(ReturnTypeProvider::class);
+        if(class_exists(MyMethodReturnTypeProvider::class)){
+            $psalm->registerHooksFromClass(MyMethodReturnTypeProvider::class);
         }
     }
 }

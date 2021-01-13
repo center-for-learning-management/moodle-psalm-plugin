@@ -20,7 +20,7 @@ class TMoodleSqlCriteriaArray extends TKeyedArray{
 class TMoodleSqlCriteriaString extends TString{
 }
 
-final class ReturnTypeProvider implements MethodReturnTypeProviderInterface
+final class MyMethodReturnTypeProvider implements MethodReturnTypeProviderInterface
 {
     private static $safe_methods = array('sql_fullname');
     private static $safe_methods_array = array('get_in_or_equal');
@@ -42,7 +42,7 @@ final class ReturnTypeProvider implements MethodReturnTypeProviderInterface
     {
         if (in_array($method_name_lowercase, self::$safe_methods_array)){
             $moodleSql = new TMoodleSqlCriteriaString();
-            $moodleSql->text = $method_name_lowercase;
+            $moodleSql->text = $fq_classlike_name.'::'.$method_name_lowercase;
 
             $moodleSqlArray = new TMoodleSqlCriteriaArray([
                 new Union([$moodleSql])
@@ -51,7 +51,7 @@ final class ReturnTypeProvider implements MethodReturnTypeProviderInterface
         }
         else if (in_array($method_name_lowercase, self::$safe_methods)){
             $moodleSql = new TMoodleSqlCriteriaString();
-            $moodleSql->text = $method_name_lowercase;
+            $moodleSql->text = $fq_classlike_name.'::'.$method_name_lowercase;
             return new Union([$moodleSql]);
         }
         else{
