@@ -1,11 +1,11 @@
 # moodle-psalm-plugin
 Moodle Psalm-Plugin (MPP) is a [Psalm](https://github.com/vimeo/psalm) plugin, that finds all vulnerable to SQL injection $DB->methods and displays content of SQL query.
 
-The script is just for finding and showing you code that you should review. 
+The script is just for finding and showing you code that you should review.
 
 ## Installation:
 
-```console
+```bash
 $ composer require --dev klebann/moodle-psalm-plugin
 $ vendor/bin/psalm-plugin enable klebann/moodle-psalm-plugin
 ```
@@ -14,9 +14,19 @@ $ vendor/bin/psalm-plugin enable klebann/moodle-psalm-plugin
 
 Copy [psalm-plugin.xml](psalm-plugin.xml) and [issueHandlers.xml](issueHandlers.xml) to Psalm root directory and modify it for your specific usuage.
 
-Run your usual Psalm command:
-```console
-$ vendor/bin/psalm --config=psalm-plugin.xml --no-diff
+Run Psalm from /path/to/moodle/local/psalm and scan /path/to/moodle/mod/checklist plugin:
+```bash
+$ ./vendor/bin/psalm --config=psalm-plugin.xml --no-diff --show-info=true ../../mod/checklist
+```
+
+Run Psalm from /path/to/moodle/local/psalm and scan /path/to/moodle/mod/checklist/lib.php file:
+```bash
+$ ./vendor/bin/psalm --config=psalm-plugin.xml --no-diff --show-info=true ../../mod/checklist/lib.php
+```
+
+Run Psalm for [Testing](tests) in psalm/vendor/klebann/moodle-psalm-plugin:
+```bash
+$ ../../bin/psalm --config=psalm.xml --no-diff --show-info=true
 ```
 
 ## Explanation:

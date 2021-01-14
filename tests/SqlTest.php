@@ -74,4 +74,52 @@ $bugs = $DB->get_records_sql("SELECT * FROM {bugtracker_issues} WHERE status $in
 $fullname = $DB->sql_fullname($first='firstname', $last='lastname');
 $records = $DB->get_records_sql("SELECT * FROM {users} WHERE fullname= $fullname");
 
+//checklist_print_overview('blablab');
 
+//TEST 007
+/**
+ * @param $courses
+ */
+function checklist_print_overview($courses)
+{
+    if (!$checklists = get_all_instances_in_courses('checklist', $courses)) {
+        return;
+    }
+    foreach ($checklists as $checklist) {
+        if ($showall) { // Show all items whether or not they are checked off (as this user is unable to check them off).
+            $groupingsql = checklist_class::get_grouping_sql($USER->id, $checklist->course);
+            $dateitems = $DB->get_records_select('checklist_item',
+                "checklist = ? AND duetime > 0 AND $groupingsql",
+                array($checklist->id),
+                'duetime');
+        } else { // Show only items that have not been checked off.
+            $groupingsql = checklist_class::get_grouping_sql($USER->id, $checklist->course, 'i.');
+            $dateitems = $DB->get_records_sql("SELECT i.* FROM {checklist_item} i
+                                                 JOIN {checklist_check} c ON c.item = i.id
+                                                WHERE i.checklist = ? AND i.duetime > 0 AND c.userid = ? AND usertimestamp = 0
+                                                  AND $groupingsql
+                                                ORDER BY i.duetime", array($checklist->id, $USER->id));
+        }
+    }
+}
+
+//Test2 007
+if (!$checklists = get_all_instances_in_courses('checklist', $courses)) {
+    return;
+}
+foreach ($checklists as $checklist) {
+    if ($showall) { // Show all items whether or not they are checked off (as this user is unable to check them off).
+        $groupingsql = checklist_class::get_grouping_sql($USER->id, $checklist->course);
+        $dateitems = $DB->get_records_select('checklist_item',
+            "checklist = ? AND duetime > 0 AND $groupingsql",
+            array($checklist->id),
+            'duetime');
+    } else { // Show only items that have not been checked off.
+        $groupingsql = checklist_class::get_grouping_sql($USER->id, $checklist->course, 'i.');
+        $dateitems = $DB->get_records_sql("SELECT i.* FROM {checklist_item} i
+                                                 JOIN {checklist_check} c ON c.item = i.id
+                                                WHERE i.checklist = ? AND i.duetime > 0 AND c.userid = ? AND usertimestamp = 0
+                                                  AND $groupingsql
+                                                ORDER BY i.duetime", array($checklist->id, $USER->id));
+    }
+}

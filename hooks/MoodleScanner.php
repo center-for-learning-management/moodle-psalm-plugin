@@ -30,6 +30,10 @@ $loc = 0;
  */
 class MoodleScanner implements AfterMethodCallAnalysisInterface
 {
+    private static $unsafe_methods = array(
+        'get_record_sql', 'get_records_sql', 'get_records_sql_menu', 'count_records_sql',
+        'record_exists_sql', 'get_field_sql', 'get_fieldset_sql');
+
     /**
      * @param MethodCall|StaticCall $expr
      * @param FileManipulation[]    $file_replacements
@@ -59,7 +63,7 @@ class MoodleScanner implements AfterMethodCallAnalysisInterface
             $method_storage = $codebase->methods->getStorage($method_id);
 
             if ($method_id->fq_class_name == "moodle_database"){ //expr name DB
-                if ($method_id->method_name == "get_records_sql"){ //add array with all sql methods
+                if (in_array($method_id->method_name, self::$unsafe_methods)){ //add array with all sql methods
                     //echo "\n-------------------------------------------------------\n";
                     //echo '$'.$expr->var->name."->".$method_id->method_name."(...)\n";
 
@@ -165,7 +169,6 @@ class MoodleScannerManager{
                     else{
                         $info .= "    Unknown type of item in $type :\n".print_r($item, true);
                     }
-
                 }
                 return $sql;
             case "Scalar_Encapsed":
@@ -188,9 +191,13 @@ class MoodleScannerManager{
                     $info .= "    Safe variable $name: created by $nameoffunction()\n";
                 }
                 else {
-                    $info .= "    Warning: Unknown variable $name: created by $nameoffunction";
+                    $info .= "    Warning: Unknown variable $name: created by $nameoffunction()\n";
                 }
                 return $name;
+            case "Expr_PropertyFetch":
+                // TODO: $THIS->VAR
+                $name = $assign->value->name->name;
+                return '$this->'.$name;
             default:
                 $info .= "    Warning: Unknown type ($type) of variable!\n";
                 $info .= print_r($assign, true);

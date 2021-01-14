@@ -19,6 +19,6 @@
     </projectFiles>
     <plugins>
         <plugin filename="hooks/MoodleScanner.php" />
-        <plugin filename="hooks/ReturnTypeProvider.php" />
+        <plugin filename="hooks/MyMethodReturnTypeProvider.php" />
     </plugins>
 </psalm>

@@ -22,7 +22,13 @@ class TMoodleSqlCriteriaString extends TString{
 
 final class MyMethodReturnTypeProvider implements MethodReturnTypeProviderInterface
 {
-    private static $safe_methods = array('sql_fullname');
+    private static $safe_methods = array(
+        'sql_bitand', 'sql_bitnot', 'sql_bitor', 'sql_bitxor', 'sql_null_from_clause', 'sql_ceil', 'sql_equal',
+        'sql_like', 'sql_like_escape', 'sql_length', 'sql_modulo', 'sql_position', 'sql_substr', 'sql_cast_char2int',
+        'sql_cast_char2real', 'sql_compare_text', 'sql_order_by_text', 'sql_concat', 'sql_concat_join', 'sql_fullname',
+        'sql_isempty', 'sql_isnotempty', 'sql_regex', 'sql_intersect'
+    );
+
     private static $safe_methods_array = array('get_in_or_equal');
 
     /**
