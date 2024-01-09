@@ -2,7 +2,7 @@
     "name": "center-for-learning-management/moodle-psalm-plugin",
     "description": "A Psalm plugin to detect unsafe usage of $DB methods with SQL",
     "type": "psalm-plugin",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
