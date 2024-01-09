@@ -242,7 +242,6 @@
     <TaintedTextWithQuotes errorLevel="suppress" />
     <TaintedUnserialize errorLevel="suppress" />
     <TaintedUserSecret errorLevel="suppress" />
-    <TaintedXpath errorLevel="suppress" />
     <TooFewArguments errorLevel="suppress" />
     <TooManyArguments errorLevel="suppress" />
     <TooManyTemplateParams errorLevel="suppress" />
