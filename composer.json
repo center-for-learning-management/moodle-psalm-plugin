@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "php": "^7.1",
+        "php": ">7.4",
         "ext-simplexml": "*"
     },
     "autoload": {
@@ -25,7 +25,7 @@
         }
     },
     "require-dev": {
-        "vimeo/psalm": "^4.3",
-        "nikic/php-parser": "^4.0"
+        "vimeo/psalm": "^5.4.0",
+        "nikic/php-parser": "^4.14",
     }
 }
