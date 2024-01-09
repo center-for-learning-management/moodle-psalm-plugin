@@ -229,7 +229,6 @@
     <TaintedCookie errorLevel="suppress" />
     <TaintedCustom errorLevel="suppress" />
     <TaintedEval errorLevel="suppress" />
-    <TaintedExtract errorLevel="suppress" />
     <TaintedFile errorLevel="suppress" />
     <TaintedHeader errorLevel="suppress" />
     <TaintedHtml errorLevel="suppress" />
