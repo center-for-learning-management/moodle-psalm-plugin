@@ -150,7 +150,6 @@
     <NonInvariantDocblockPropertyType errorLevel="suppress" />
     <NonInvariantPropertyType errorLevel="suppress" />
     <NonStaticSelfCall errorLevel="suppress" />
-    <NonVariableReferenceReturn errorLevel="suppress" />
     <NoValue errorLevel="suppress" />
     <NullableReturnStatement errorLevel="suppress" />
     <NullArgument errorLevel="suppress" />
