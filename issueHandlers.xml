@@ -31,7 +31,6 @@
     <DuplicateFunction errorLevel="suppress" />
     <DuplicateMethod errorLevel="suppress" />
     <DuplicateParam errorLevel="suppress" />
-    <DuplicateProperty errorLevel="suppress" />
     <EmptyArrayAccess errorLevel="suppress" />
     <ExtensionRequirementViolation errorLevel="suppress" />
     <FalsableReturnStatement errorLevel="suppress" />
