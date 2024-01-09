@@ -288,7 +288,6 @@
     <UnusedClosureParam errorLevel="suppress" />
     <UnusedConstructor errorLevel="suppress" />
     <UnusedDocblockParam errorLevel="suppress" />
-    <UnusedIssueHandlerSuppression errorLevel="suppress" />
     <UnusedForeachValue errorLevel="suppress" />
     <UnusedFunctionCall errorLevel="suppress" />
     <UnusedMethod errorLevel="suppress" />
