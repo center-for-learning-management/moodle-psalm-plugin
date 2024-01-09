@@ -236,7 +236,6 @@
     <TaintedInput errorLevel="suppress" />
     <TaintedLdap errorLevel="suppress" />
     <TaintedShell errorLevel="suppress" />
-    <TaintedSleep errorLevel="suppress" />
     <TaintedSql errorLevel="suppress" />
     <TaintedSSRF errorLevel="suppress" />
     <TaintedSystemSecret errorLevel="suppress" />
