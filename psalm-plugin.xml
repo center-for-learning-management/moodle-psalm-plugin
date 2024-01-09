@@ -5,9 +5,7 @@
         xmlns="https://getpsalm.org/schema/config"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:xi="http://www.w3.org/2001/XInclude"
-        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-        autoloader="psalm-autoload.php"
-    >
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd">
     <globals>
         <var name="DB" type="moodle_database|null" />
     </globals>
